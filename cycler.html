@@ -28,19 +28,23 @@
         <div class="cycler">row item 2</div>  
         <div class="cycler">row item 3</div>  
       </div>
+      <label for="inputElement">Type something: <br></label>
+      <input class="form-control" type="text" name="input" id="inputElement" value="">
   
   <p> Press the button to create an new element of type div and then add it to the container.
       </p>
-      <button onclick="makeNewDiv()">Add value</button>
-      <button onclick="get()">Get</button>
-      <button onclick="spin()">Spin value</button>
+      <button  class="btn btn-warning" type="submit"  onclick="makeNewDiv()">Add value</button>
+      <button   class="btn btn-danger" type="submit" onclick="get()">Get</button>
+      <button  class="btn btn-success" type="submit"  onclick="spin()">Spin value</button>
+      
+
       <script>
 	function makeNewDiv(){
 		/* make the div and its text */
 		let element = document.createElement("div")
-		let value = document.getElementById("inputElement").value
+		let val = document.getElementById("inputElement").value
 
-            element.innerHTML = value
+            element.innerHTML = val
             element.className = "cycler"
 
             let container = document.getElementById("target")
@@ -65,5 +69,34 @@
             container.insertBefore(removedItem, container.firstChild)
         }
     }
+    function swap() {
+		let cyclerItems = document.getElementsByClassName("cycler")
+
+		let min = 0
+		let max = cyclerItems.length
+
+		let rand1 = Math.floor(Math.random() * (max - min) ) + min;
+		let rand2 = Math.floor(Math.random() * (max - min) ) + min;
+
+		if ((rand1 != rand2) && (max > 1)) {
+
+			let item1 = cyclerItems[rand1]
+			let item2 = cyclerItems[rand2]
+
+			let container = document.getElementById('target')
+			
+			if (rand1 > rand2) {
+				cyclerItems[rand1].remove()
+				cyclerItems[rand2].remove()
+			} else {
+				cyclerItems[rand2].remove()				
+				cyclerItems[rand1].remove()
+			}
+
+			container.insertBefore(item2, cyclerItems[rand1])
+			container.insertBefore(item1, cyclerItems[rand2])
+		}
+
+	}
 </script>
 </body>

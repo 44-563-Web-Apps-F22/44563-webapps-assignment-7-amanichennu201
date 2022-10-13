@@ -1,4 +1,4 @@
-OCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <title>creating reaction game</title>
@@ -11,10 +11,10 @@ OCTYPE html>
 </head>
 <body>
     <h2>Amani Chennu reaction timer</h2><br>
-    <div id="target">Your time</div>
-    <div id="count">Count</div><br>
-    <button>Start Timer</button>
-    <button>React Now</button><br>
+    <div  class="p-2 bg-info flex-fill" id="target">Your time</div>
+    <div class="p-2 bg-success flex-fill"  id="countdown">Count</div><br>
+    <button class="btn btn-warning" type="submit" onclick="startTime()">Start Timer</button>
+    <button class="btn btn-warning" type="submit" onclick="recordReact()">React Now</button><br>
     <script>
         var myTime = Date.now()
         function recordReact() {
@@ -24,6 +24,9 @@ OCTYPE html>
     </script>
     <script>
         function startTime() {
+            let min = 2
+            let max = 11
+            let limit = Math.floor(Math.random() * (max - min) ) + min;
             for (let i = 0; i < 4; i++) {
                 setTimeout(() => {
                     document.getElementById("countdown").innerHTML = i
@@ -38,5 +41,11 @@ OCTYPE html>
                 }
             }, 3000);
         }
+        function display(i, limit) {
+      setTimeout(() => {
+        document.getElementById('countdown').innerHTML = i
+      }, ((limit-i)*1000))
+      
+    }
     </script>
 </body>
