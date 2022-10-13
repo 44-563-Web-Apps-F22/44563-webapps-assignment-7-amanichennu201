@@ -32,6 +32,8 @@
   <p> Press the button to create an new element of type div and then add it to the container.
       </p>
       <button onclick="makeNewDiv()">Add value</button>
+      <button onclick="get()">Get</button>
+      <button onclick="spin()">Spin value</button>
       <script>
 	function makeNewDiv(){
 		/* make the div and its text */
@@ -45,5 +47,23 @@
             container.appendChild(element)
 		
 	}
+</script>
+<script>
+    function get() {
+        let cyclerItems = document.getElementsByClassName("cycler")
+        if(cyclerItems.length > 0) {
+            cyclerItems[cyclerItems.length-1].remove()
+        }
+    }
+
+    function spin() {
+        let cyclerItems = document.getElementsByClassName("cycler")
+        if(cyclerItems.length > 1) {
+            removedItem = cyclerItems[cyclerItems.length-1]
+            cyclerItems[cyclerItems.length-1].remove()
+            let container = document.getElementById("target")
+            container.insertBefore(removedItem, container.firstChild)
+        }
+    }
 </script>
 </body>
